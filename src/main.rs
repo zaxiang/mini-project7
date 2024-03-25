@@ -12,9 +12,6 @@ async fn main() -> Result<()> {
     // Initialize the client
     let client = QdrantClient::from_url("http://localhost:6334").build()?;
 
-    // The Rust client uses Qdrant's GRPC interface to initialize
-    //let mut client = QdrantClient::from_url("http://localhost:6334").build()?;
-
     // Create a collection
     let collection_name = "test_collection";
 
@@ -90,19 +87,10 @@ async fn main() -> Result<()> {
         })
         .await?;
 
-    //dbg!(search_result);
-
     // Visualize the output for each found point
     for (index, point) in search_result.result.iter().enumerate() {
         println!("Point {} Payload: {:?} Score: {}", index + 1, serde_json::to_string_pretty(&point.payload).unwrap(), point.score);
     }
-
-
-    // Ingest data into Qdrant
-    //ingest_data(&mut client, collection_name).await?;
-
-    // Perform a search query
-    //search_query(&mut client, collection_name).await?;
 
     Ok(())
 }
