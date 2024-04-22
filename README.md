@@ -96,11 +96,7 @@ let search_result = client
 ```
 
 #### Visualize the output for each found point
-```rust
-for (index, point) in search_result.result.iter().enumerate() {
-    println!("Point {} Payload: {:?} Score: {}", index + 1, serde_json::to_string_pretty(&point.payload).unwrap(), point.score);
-}
-```
+we use a basic text-based visualization to display the scores by city by printing the city names and their corresponding scores in a formatted and user-friendly manner.
 
 ### Results
-![result](./vis.png)
+![result](./vis_new.png)
