@@ -88,8 +88,15 @@ async fn main() -> Result<()> {
         .await?;
 
     // Visualize the output for each found point
-    for (index, point) in search_result.result.iter().enumerate() {
-        println!("Point {} Payload: {:?} Score: {}", index + 1, serde_json::to_string_pretty(&point.payload).unwrap(), point.score);
+    // for (index, point) in search_result.result.iter().enumerate() {
+    //     println!("Point {} Payload: {:?} Score: {}", index + 1, serde_json::to_string_pretty(&point.payload).unwrap(), point.score);
+    // }
+
+    println!("Scores by City:");
+    for point in &search_result.result {
+        if let Some(city) = point.payload.get("city").and_then(|c| c.as_str()) {
+            println!("City: {}, Score: {}", city, point.score);
+        }
     }
 
     Ok(())

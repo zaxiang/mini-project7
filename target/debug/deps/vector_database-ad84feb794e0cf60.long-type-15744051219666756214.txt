@@ -1,0 +1,1 @@
+Cartesian2d<std::iter::Map<Zip<std::slice::Iter<'_, std::string::String>, std::slice::Iter<'_, f64>>, {closure@src/main.rs:119:66: 119:74}>, RangedCoordf64>
